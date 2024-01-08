@@ -13,11 +13,13 @@ typedef struct cellule_s cellule ;
 typedef cellule* dico ;
 
 bool chercher_mot(dico dic,string mot){
-    int l=strlen(mot);
-    for (int i=0;i<l;i++){
-        if (dico[mot[i]-'a'].suiv==NULL) 
-    }
+    if dic=NULL return false;
+    if mot='' return dic.isterminal ;
+    next=dico[mot[i]-'a'].suiv;
+    if (next==NULL) return false;
+    return chercher_mot(next,&mot[1]);
 }
+
 
 
 int main(int argc, char* argv[]){
