@@ -19,7 +19,7 @@ dico dictionnaire_vide(void) {
 }
 
 
-bool chercher_mot(dico dic,char* mot){
+bool chercher_mot(dico dic,char* mot){// inachevé, à tester et corriger
     if (dic=NULL) return false;
     if (mot=="") return dic->isterminal ;
     dico next=dic[mot[0]-'a'].suiv;
