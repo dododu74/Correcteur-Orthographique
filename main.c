@@ -14,7 +14,7 @@ typedef cellule* dico ;
 
 dico dictionnaire_vide(void) {
     dico dict = (dico)malloc(sizeof(cellule)*26);
-    printf("%i" ,dict[0]);
+    printf("%c" ,dict[0].data);
     return dict;
 }
 
@@ -31,6 +31,7 @@ bool chercher_mot(dico dic,char* mot){
 
 int main(int argc, char* argv[]){
     assert(argc == 2);
+    dico dict = dictionnaire_vide();
     // Les entrées attendus sont : ./prog FILENAME
     int errno = 0;
     FILE* fd = fopen (argv[1] , "r" ); // On ouvre le fichier mis en commentaire en mode 'read'
@@ -41,8 +42,8 @@ int main(int argc, char* argv[]){
     }
     
     int nb = 0;
-    fscanf ( fd , "%d" , &nb ) ;
-    fclose ( fd );
+    fscanf (fd , "%d" , &nb ) ;
+    fclose (fd );
 
     return 0;
 }
