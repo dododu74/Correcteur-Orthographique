@@ -12,7 +12,7 @@ int main(int argc, char* argv[]){
         argv [1],errno ,strerror(errno));
         return 1;
     }
-
+    
     int nb = 0;
     fscanf ( fd , " % d " , & nb ) ;
     fclose ( fd );
