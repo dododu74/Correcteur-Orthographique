@@ -21,8 +21,8 @@ dico dictionnaire_vide(void) {
 
 bool chercher_mot(dico dic,char* mot){
     if (dic=NULL) return false;
-    if (mot=='') return dic.isterminal ;
-    dico next=dic[mot[i]-'a'].suiv;
+    if (mot=='') return dic->isterminal ;
+    dico next=dic[mot[0]-'a'].suiv;
     if (next==NULL) return false;
     return chercher_mot(next,&mot[1]);
 }
