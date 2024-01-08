@@ -14,7 +14,7 @@ typedef cellule* dico ;
 
 dico dictionnaire_vide(void) {
     dico dict = (dico)malloc(sizeof(cellule)*26);
-    printf("%c" ,dict[0].data);
+    // printf("%c" ,dict[0].data); Pour tester
     return dict;
 }
 
