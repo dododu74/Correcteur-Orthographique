@@ -12,11 +12,20 @@ struct cellule_s {
 typedef struct cellule_s cellule ;
 typedef cellule* dico ;
 
+dico dictionnaire_vide(void) {
+    dico dict = (dico)malloc(sizeof(cellule)*26);
+    printf("%i" ,dict[0]);
+    return dict;
+}
+
+
 bool chercher_mot(dico dic,string mot){
     int l=strlen(mot);
     for (int i=0;i<l;i++){
-        if (dico[mot[i]-'a'].suiv==NULL) 
+        if (dico[mot[i]-'a'].suiv==NULL)
+                
     }
+    
 }
 
 
@@ -24,7 +33,7 @@ int main(int argc, char* argv[]){
     assert(argc == 2);
     // Les entrées attendus sont : ./prog FILENAME
     int errno = 0;
-    FILE* fd = fopen (argv [1] , "r" ); // On ouvre le fichier mis en commentaire en mode 'read'
+    FILE* fd = fopen (argv[1] , "r" ); // On ouvre le fichier mis en commentaire en mode 'read'
     if ( fd == NULL ) {
         printf ("Erreur lors de l'ouverture du fichier %s : %d (%s) \n" ,
         argv [1],errno ,strerror(errno));
