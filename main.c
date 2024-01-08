@@ -1,4 +1,7 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <assert.h>
+#include <stdbool.h>
 
 struct cellule_s {
     char data;
