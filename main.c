@@ -2,15 +2,22 @@
 #include <stdlib.h>
 #include <assert.h>
 #include <stdbool.h>
+#include <string.h>
 
 struct cellule_s {
     char data;
-    struct cellule_s* suiv;
+    bool isterminal;
+    struct cellule_s* suiv[26];
 };
 typedef struct cellule_s cellule ;
 typedef cellule* dico ;
 
-
+bool chercher_mot(dico dic,string mot){
+    int l=strlen(mot);
+    for (int i=0;i<l;i++){
+        if (dico[mot[i]-'a'].suiv==NULL) 
+    }
+}
 
 
 int main(int argc, char* argv[]){
