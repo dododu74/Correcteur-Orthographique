@@ -41,8 +41,8 @@ int main(int argc, char* argv[]){
     }
     
     int nb = 0;
-    fscanf ( fd , "%d" , &nb ) ;
-    fclose ( fd );
+    fscanf (fd , "%d" , &nb ) ;
+    fclose (fd );
 
     return 0;
 }
