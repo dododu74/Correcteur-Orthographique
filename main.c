@@ -1,6 +1,14 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <assert.h>
+
+struct cellule_s {
+    char data;
+    struct cellule_s* suiv;
+};
+typedef struct cellule_s cellule ;
+typedef cellule* dico ;
+
+
+
 
 int main(int argc, char* argv[]){
     assert (argc == 2);
