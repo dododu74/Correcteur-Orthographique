@@ -22,7 +22,7 @@ int main(int argc, char* argv[]){
     }
     
     int nb = 0;
-    fscanf ( fd , " % d " , & nb ) ;
+    fscanf ( fd , "%d" , &nb ) ;
     fclose ( fd );
 
     return 0;
