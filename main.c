@@ -14,7 +14,7 @@ typedef cellule* dico ;
 
 
 int main(int argc, char* argv[]){
-    assert (argc == 2);
+    assert(argc == 2);
     // Les entrées attendus sont : ./prog FILENAME
     int errno = 0;
     FILE* fd = fopen (argv [1] , "r" ); // On ouvre le fichier mis en commentaire en mode 'read'
