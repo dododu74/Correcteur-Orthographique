@@ -92,7 +92,7 @@ void verifier_mots(dictionnaire d)
 void printout(FILE* fichout, tableau* tabmots, int n){
   // écrit les mots du tableau tabmots de taille n dans le fichier fich
   for (int i=0;i<n;i++){
-    fprintf(fichout,"%s ",tabmots.data[i]);
+    fprintf(fichout,"%s ",tabmots->data[i]);
   }
   fprintf(fichout,"\n");
 }
@@ -127,6 +127,7 @@ int main(int argc, char *argv[])
       
       //  !!!!!!!!!!!!!!!!!!!!!
       //  Il nous faut un moyen de faire une chaine de char avec la "somme" des char adresse[i]
+      //  Comme ça on a juste a récuperer les mots un par un pour les corriger ect..
 
     }
     else {
