@@ -89,7 +89,13 @@ void verifier_mots(dictionnaire d)
   fclose(fres);
 }
 
-
+void printout(FILE* fichout, tableau* tabmots, int n){
+  // écrit les mots du tableau tabmots de taille n dans le fichier fich
+  for (int i=0;i<n;i++){
+    fprintf(fichout,"%s ",tabmots.data[i]);
+  }
+  fprintf(fichout,"\n");
+}
 
 ////////////////////////////////////// Pour executer : /////////////
 // ./orthographe Ressources/fr-reforme1990_court_sans.dic texte5.txt
