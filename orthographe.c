@@ -4,6 +4,7 @@
 #include <string.h>
 #include <assert.h>
 #include "dictionnaire.h"
+#include "tableau_dyn.h"
 
 /**
  * Cette fonction lit le contenu du fichier dont le nom est transmis en
@@ -86,7 +87,13 @@ void verifier_mots(dictionnaire d)
   fclose(fres);
 }
 
-
+void printout(FILE* fichout, tableau* tabmots, int n){
+  // écrit les mots du tableau tabmots de taille n dans le fichier fich
+  for (int i=0;i<n;i++){
+    fprintf(fichout,"%s ",tabmots.data[i]);
+  }
+  fprintf(fichout,"\n");
+}
 
 int main(int argc, char *argv[])
 {
