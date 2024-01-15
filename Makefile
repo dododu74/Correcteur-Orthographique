@@ -6,7 +6,7 @@
 # fait appel à des fonctions déclarées dans un fichier .h et définies dans un
 # fichier .c de même nom de base que celui du fichier objet généré en .o.
 # Nom de base : nom du fichier sans extension.
-OBJETS= dictionnaire.o alphabet.o
+OBJETS= dictionnaire.o alphabet.o read_with_mmap.o tableau_dyn.o
 
 # Donner ci-dessous le(s) nom(s) du(des) fichier(s) exécutable(s) à produire
 NOM_EXECUTABLES = orthographe
