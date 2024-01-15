@@ -12,7 +12,7 @@
 // La ligne suivante sert à compiler sans gérer les accents et les caractères -
 // ou /.
 
-// #define SANS_ACCENT 1
+#define SANS_ACCENT 1
 
 
 /* Le plus simple est d'associer à chaque caractère lu en UTF-8 un numéro.
