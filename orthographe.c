@@ -107,7 +107,7 @@ int main(int argc, char *argv[])
 
   // Vérification des mots donnés en entrée par l'utilisateur
   // verifier_mots(d);
-  ver
+  
 
 
   // Suppression du dictionnaire
