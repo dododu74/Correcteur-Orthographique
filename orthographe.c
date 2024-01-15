@@ -95,6 +95,17 @@ void printout(FILE* fichout, tableau* tabmots, int n){
   fprintf(fichout,"\n");
 }
 
+void conjuguer(tableau* tabmots,int n){
+  // conjugue les verbes du tableau de mots tabmots de taille n en les modifiant
+  // /!\ il va falloir modifier la structure du dico pour implémenter les natures des mots; ou au moins pour les verbes
+  //les verbes du 1er grp ont un /a après eux dans le dico, et ceux du 2e ont un /f
+  for (int i=0;i<n;i++){
+    if est_un_verbe(tabmots->data[i]) /*à définir*/{
+      
+    } 
+  }
+}
+
 int main(int argc, char *argv[])
 {
   char nom_fichier[256];

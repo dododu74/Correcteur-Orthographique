@@ -49,6 +49,7 @@
 struct lettre_s {
   struct lettre_s* suivantes[NB_LETTRES];
   bool terminal;
+  int nature; // possibilité d'implémentation
   int nb_mots; // non nécessaire
 };
 
