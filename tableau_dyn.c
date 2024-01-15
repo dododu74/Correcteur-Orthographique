@@ -38,7 +38,7 @@ tableau* creer_tableau(int n)
  *          v  valeur du nouvel élément
  * Sortie : pas de valeur de retour, le tableau contient un nouvel élément.
  */
-void push_back(tableau* t, unsigned char v)
+void push_back(tableau* t, char* v)
 {
   if (t->nb == t->capacite)
   {

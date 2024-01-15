@@ -31,7 +31,7 @@ tableau* creer_tableau(int t);
  *          v  valeur du nouvel élément
  * Sortie : pas de valeur de retour, le tableau contient un nouvel élément.
  */
-void push_back(tableau* t, unsigned char v);
+void push_back(tableau* t, char* v);
 
 /* Renvoie la valeur d'un élément à l'indice donné.
  * Entrée : t  un pointeur vers un tableau redimensionnable

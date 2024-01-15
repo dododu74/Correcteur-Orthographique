@@ -4,6 +4,9 @@
 #include <string.h>
 #include <assert.h>
 #include "dictionnaire.h"
+#include "read_with_mmap.h"
+#include "tableau_dyn.h"
+
 
 /**
  * Cette fonction lit le contenu du fichier dont le nom est transmis en
@@ -88,6 +91,10 @@ void verifier_mots(dictionnaire d)
 
 
 
+////////////////////////////////////// Pour executer : /////////////
+// ./orthographe Ressources/fr-reforme1990_court_sans.dic texte5.txt
+
+
 int main(int argc, char *argv[])
 {
   char nom_fichier[256];
@@ -96,6 +103,31 @@ int main(int argc, char *argv[])
     strncpy(nom_fichier, argv[1], 256);
   } else {
     strcpy(nom_fichier, "Ressources/fr-reforme1990_court_sans.dic");
+  }
+
+  // Initialisation du mmap
+  size_t size;
+  char* adresse = open_mmapfile(argv[2], &size); 
+  
+  // On va mettre tous les mots de l'entrée dans un tableau redimentionnable pour obtenir 
+  // Création du tableau prenant tous les mots de l'entée
+  tableau* tabmot = creer_tableau(0);
+  // Ajout des mots dans le tableau
+  char* mot;
+  for (unsigned int i = 0; i<=size; i++) {
+
+    // printf ("%c",adresse[i]); pour tester
+    if (adresse[i] != ' ') {  // On va considerer un mot comme étant l'ensembles des lettres qui se suivent
+      
+      //  !!!!!!!!!!!!!!!!!!!!!
+      //  Il nous faut un moyen de faire une chaine de char avec la "somme" des char adresse[i]
+
+    }
+    else {
+      // On ajoute ensuite le mot au tableau des mots
+      push_back(tabmot, mot);
+      mot = "";
+    }
   }
 
   // Création du dictionnaire
@@ -108,10 +140,13 @@ int main(int argc, char *argv[])
   // Vérification des mots donnés en entrée par l'utilisateur
   // verifier_mots(d);
   
-
+  // Suppression du tableau
+  liberer_tableau(tabmot);
 
   // Suppression du dictionnaire
   supprimer_dictionnaire(d);
+  // Fermetude du fichier d'entrée
+  close_mmapfile(adresse, size); 
 
   return 0;
 }
