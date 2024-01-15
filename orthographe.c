@@ -106,7 +106,9 @@ int main(int argc, char *argv[])
   printf("Le nombre de structures est %d\n", nombre_de_structures(d));
 
   // Vérification des mots donnés en entrée par l'utilisateur
-  verifier_mots(d);
+  // verifier_mots(d);
+  ver
+
 
   // Suppression du dictionnaire
   supprimer_dictionnaire(d);

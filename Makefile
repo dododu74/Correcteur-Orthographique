@@ -6,10 +6,10 @@
 # fait appel à des fonctions déclarées dans un fichier .h et définies dans un
 # fichier .c de même nom de base que celui du fichier objet généré en .o.
 # Nom de base : nom du fichier sans extension.
-OBJETS= dictionnaire.o alphabet.o read_with_mmap.o tableau_dyn.o
+OBJETS= dictionnaire.o alphabet.o
 
 # Donner ci-dessous le(s) nom(s) du(des) fichier(s) exécutable(s) à produire
-NOM_EXECUTABLES= conjugaison
+NOM_EXECUTABLES = orthographe
 
 # Ligne ci-dessous à conserver
 OPTIONS = -std=c99 -Wall -Wextra -Wvla -fsanitize=address,undefined -O0 -g
@@ -26,7 +26,7 @@ modules: $(OBJETS)
 %.o : %.c %.h
 	gcc -c $< $(OPTIONS)
 
-conjugaison: conjugaison.c $(OBJETS)
+orthographe: orthographe.c $(OBJETS)
 	gcc -o $@ $(OPTIONS) $^
 
 # $(NOM_EXECUTABLE): $(NOM_FICHIER) $(OBJETS)
