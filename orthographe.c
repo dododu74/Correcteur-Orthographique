@@ -102,7 +102,7 @@ int main(int argc, char *argv[])
   if (argc > 1) {
     strncpy(nom_fichier, argv[1], 256);
   } else {
-    strcpy(nom_fichier, "fr-reforme1990_court_sans.dic");
+    strcpy(nom_fichier, "Ressources/fr-reforme1990_court_sans.dic");
   }
 
   // Création du dictionnaire
@@ -113,7 +113,9 @@ int main(int argc, char *argv[])
   printf("Le nombre de structures est %d\n", nombre_de_structures(d));
 
   // Vérification des mots donnés en entrée par l'utilisateur
-  verifier_mots(d);
+  // verifier_mots(d);
+  
+
 
   // Suppression du dictionnaire
   supprimer_dictionnaire(d);
