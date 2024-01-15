@@ -95,7 +95,7 @@ int main(int argc, char *argv[])
   if (argc > 1) {
     strncpy(nom_fichier, argv[1], 256);
   } else {
-    strcpy(nom_fichier, "fr-reforme1990_court_sans.dic");
+    strcpy(nom_fichier, "Ressources/fr-reforme1990_court_sans.dic");
   }
 
   // Création du dictionnaire
