@@ -1,0 +1,4 @@
+- Faire le lexicalizeur
+- Prendre en compte plus cas dans proposition correcte
+- Ajouter plus règles
+- ...
