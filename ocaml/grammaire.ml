@@ -1,6 +1,6 @@
 type genre = Masculin | Feminin;;
 type nombre = Singulier | Pluriel;;
-type personne = Premiere | Seconde | Troisieme | None ;;
+type personne = Premiere | Seconde | Troisieme | Aucun ;;
 
 
 type accord = {
