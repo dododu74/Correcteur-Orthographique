@@ -1,6 +1,6 @@
 type genre = Masculin | Feminin;;
 type nombre = Singulier | Pluriel;;
-type personne = Premiere | Seconde | Troisieme | SansPers ;;
+type personne = Premiere | Seconde | Troisieme | None ;;
 
 
 type accord = {
@@ -15,7 +15,7 @@ let m_sing_trois = {g = Masculin; nb = Singulier; pers = Troisieme};;
 
 
 (*
-TODO : Ajouter les adjectifs, et les adverbes
+TODO : Ajouter les adverbes
 
 *)
 type nature = 
@@ -58,7 +58,9 @@ let une = new_determinant Feminin Singulier Troisieme "une"
 let pomme = new_nom Feminin Singulier Troisieme "pomme";;
 let verte = new_adjctif Feminin Singulier Troisieme "verte";;
 
-let phrase = [je; mange; une; pomme; verte];;
+let phrase1 = [je; mange; une; pomme; verte];;
+let phrase2 = [je; mange; verte; une; pomme];;
+let phrase3 = [je; verte; mange; une; pomme];;
 
 (*
 
@@ -124,3 +126,12 @@ let proposition_correcte (phrase : mot list) = match phrase with
 				) && aux suiv q
 	in aux t r
 ;;
+
+type fonction = Sujet | Verbe | ComplementObjetDirect
+
+type blocphrase = {
+	foncti : fontion;
+	mots : mot list;
+	acc : accord
+};;
+
