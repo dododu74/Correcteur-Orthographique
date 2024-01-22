@@ -85,6 +85,10 @@ COD : (D N) (D N A)
 *)
 
 let decoupe_phrase (phrase : mot list) = 
+	let rec aux phrase (blocs : blocphrase list) = match phrase with
+		|	[]->blocs
+  	| mot::reste -> match mot.nat with
+			| Verbe ->
 
 (*
 Pour les phrases plus complexes, il faudra prendre en compte les propositions,
