@@ -112,8 +112,10 @@ let proposition_correcte (phrase : mot list) = match phrase with
 	in aux t r
 ;;
 
+type fonction = Sujet | Verbe | ComplementObjetDirect
 
 type blocphrase = {
+	foncti : fontion;
 	mots : mot list;
 	acc : accord
 };;
