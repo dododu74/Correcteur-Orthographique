@@ -148,9 +148,6 @@ let decoupe_phrase (phrase : mot list) =
 	let bloc_verbe = creer_bloc Verbe [] m_sing_trois (* Initialisation des blocs *)
 	let bloc_sujet = creer_bloc Sujet [] m_sing_trois
 	let bloc_cod = creer_bloc ComplementObjetDirect [] m_sing_trois
-in aux []
-
-	let bloc_verbe = creer_bloc Verbe [] m_sing_trois
 
 	let rec aux (phrase : mot list) (blocs : blocphrase list) = 
 		match phrase with
