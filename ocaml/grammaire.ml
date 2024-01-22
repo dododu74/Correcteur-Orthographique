@@ -115,6 +115,7 @@ let proposition_correcte (phrase : mot list) = match phrase with
 (*
 Nous travaillons sur la structure de phrase simple:
 Sujet Verbe COD
+
 pour détecter cette structure :
 
 Sujets : (P) (D N) (D A N) etc  ex: "Je" "Un oiseau" "Le premier jeu"
@@ -130,9 +131,28 @@ type blocphrase = {
 	acc : accord
 };;
 
-let decoupe_phrase (phrase : mot list) = 
-	let rec aux (phrase : mot list) (blocs : blocphrase list) = match phrase with
-		|	[]->blocs
-  	| mot::reste -> match mot.nat with
-			| Verbe -> aux reste ({Verbe,[mot],mot.acc}::blocs)
+let test_accords_blocs bloc1 bloc2 = 
+	match bloc1,bloc2 with
+	| {_;_;acc1},{_;_;acc2}->acc1=acc2 
+;;
 
+let decoupe_phrase (phrase : mot list) = 
+	let rec aux (phrase : mot list) (blocs : blocphrase list) = 
+		match phrase with
+			|	[]->blocs
+  		| mot::reste -> 
+				match mot.nat with
+					| Verbe -> aux reste ({Verbe,[mot],mot.acc}::blocs)
+
+(*
+concept:
+
+tant que il y a des mots :
+	si le mot suivant correspond au bloc courant:
+		insérer le mot dans le bloc courant
+	sinon :
+		fermer le bloc, l'ajouter à la liste et en ouvrir un autre
+si il n'y a plus de mots, fermer le bloc courant
+vérifier la cohérence interne de chaque bloc : donc les accords 
+vérifier la structure de la phrase
+*)
