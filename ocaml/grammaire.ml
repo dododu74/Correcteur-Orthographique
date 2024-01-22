@@ -165,15 +165,7 @@ Le chat de ma voisine fait du ski
 
 «de ma voisine» est ici imbriqué dans Le chat <... > fait du ski.
 
-Ça serait mieux de prendre en compte les groupes nominaux, les propositions...
-
-Ça rend la chose plus simple à parser:
-	- ... <NOM> <PRÉPOSITION> ... => complément du nom
-	- ... <NOM> <PRONOM-RELATIF> ... => proposition subordonnée relative
-	- ... <CONJONCTION DE COORDINATION> ..., fin de proposition
-	- ...
-
-Ha, et faites gâffe le && est prioritaire sur || (dans le doute mettez des parenthèses).
+Ha, et faites gaffe le && est prioritaire sur || (dans le doute mettez des parenthèses).
 *)
 
 
