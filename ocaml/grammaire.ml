@@ -132,19 +132,17 @@ type blocphrase = {
 };;
 
 (* création d'un bloc *)
-let creer_bloc (fo : fonction) (mo : mot list) (ac : accord) = {fonct = fo; mots = mo; acc = ac}
+let creer_bloc (fo : fonction) (mo : mot list) (ac : accord) = {fonct = fo; mots = mo; acc = ac};;
  
 (* Ajout d'un mot dans un bloc *)
 let add_in_bloc (bloc : blocphrase) (mo : mot) = {fonct = bloc.fonct; mots = mo::bloc.mots; acc = mot.acc};;
-
-let add_in_bloc (bloc : blocphrase) (mo : mot) = {fonct = bloc.fonct; mots = mo::bloc.mots; acc = bloc.acc};;
 
 let test_accords_blocs bloc1 bloc2 = 
 	match bloc1,bloc2 with
 	| {_;_;acc1},{_;_;acc2}->acc1=acc2 
 ;;
 
-let decoupe_phrase (phrase : mot list) = 
+let decoupe_phrase (phrase : mot list) = (* Non achevée*)
 	let bloc_verbe = creer_bloc Verbe [] m_sing_trois (* Initialisation des blocs *)
 	let bloc_sujet = creer_bloc Sujet [] m_sing_trois
 	let bloc_cod = creer_bloc ComplementObjetDirect [] m_sing_trois
