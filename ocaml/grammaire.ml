@@ -125,14 +125,16 @@ COD : (D N) (D N A)
 type fonction = Sujet | Verbe | ComplementObjetDirect
 
 type blocphrase = {
-	foncti : fonction;
+	fonct : fonction;
 	mots : mot list;
 	acc : accord
 };;
 
+let creer_bloc (fo : fonction) (mo : mot list) (ac : accord) = {fonct = fo; mots = mo; acc = ac}
+ 
+let add_in_bloc (bloc : blocphrase) (mo : mot) = {fonct = bloc.fonct; mots = mo::bloc.mots; acc = bloc.acc};;
+
 let decoupe_phrase (phrase : mot list) = 
-	let rec aux (phrase : mot list) (blocs : blocphrase list) = match phrase with
-		|	[]->blocs
-  	| mot::reste -> match mot.nat with
-			| Verbe -> aux reste ({Verbe,[mot],mot.acc}::blocs)
+	let bloc_verbe = creer_bloc Verbe [] m_sing_trois
+
 
