@@ -1,6 +1,6 @@
 type genre = Masculin | Feminin;;
 type nombre = Singulier | Pluriel;;
-type personne = Premiere | Seconde | Troisieme;;
+type personne = Premiere | Seconde | Troisieme | SansPers ;;
 
 
 type accord = {
@@ -22,7 +22,8 @@ type nature =
 	Determinant | 
 	Nom |  
 	Pronom | 
-	Verbe;;
+	Verbe |
+	Adjectifs;;
 
 (*
 TODO : Créer un type "constructeur" de mot qui instancie un mot (e.g. manger) decliné avec
@@ -45,6 +46,7 @@ let new_nom = new_mot Nom;;
 let new_verbe = new_mot Verbe;;
 let new_determinant = new_mot Determinant
 let new_pronom = new_mot Pronom;;
+let new_adjctif = new_mot Adjectifs;;
 
 (*
 TODO: faire un lexicaliseur pour le lexage des mots.
@@ -54,16 +56,25 @@ let je = new_pronom Masculin Singulier Premiere "Je";;
 let mange = new_verbe Masculin Singulier Premiere "mange";;
 let une = new_determinant Feminin Singulier Troisieme "une"
 let pomme = new_nom Feminin Singulier Troisieme "pomme";;
+let verte = new_adjctif Feminin Singulier Troisieme "verte";;
 
-let phrase = [je; mange; une; pomme];;
+let phrase = [je; mange; une; pomme; verte];;
 
 (*
+
 P V D N
 D N V D N
 V D N
 P V N
 D N V N
+
+P V D N A
+P V D A N
+P V D A A N
+
 ...
+
+
 
 Pour les phrases plus complexes, il faudra prendre en compte les propositions,
 les groupes nonimaux... au lieu de modifier cette fonction.
@@ -84,9 +95,17 @@ let proposition_correcte (phrase : mot list) = match phrase with
 				| Pronom -> prec.nat <> Nom && prec.nat <> Pronom 
 				| Nom -> (
 					prec.nat = Verbe || 
-					prec.nat = Determinant && suiv.acc = prec.acc)
+					prec.nat = Determinant ||
+					prec.nat = Adjectifs && suiv.acc = prec.acc 
+					)
+				| Adjectifs -> (
+					prec.nat = Nom ||
+					prec.nat = Determinant ||
+					prec.nat = Adjectifs && suiv.acc = prec.acc 
+					)
 				| Verbe -> 
 					(prec.nat = Pronom || prec.nat = Nom) && suiv.acc = prec.acc
+				
 				) && aux suiv q
 	in aux t r
 ;;
