@@ -76,23 +76,9 @@ P V D A A N
 
 
 
-Nous travaillons sur la structure de phrase simple:
-Sujet Verbe COD
-pour détecter cette structure :
 
-Sujets : (P) (D N) (D A N) etc  ex: "Je" "Un oiseau" "Le premier jeu"
-Verbes : (V) (V V) "parlons" "a entendu"
-COD : (D N) (D N A) 
 
-*)
 
-let decoupe_phrase (phrase : mot list) = 
-	let rec aux phrase (blocs : blocphrase list) = match phrase with
-		|	[]->blocs
-  	| mot::reste -> match mot.nat with
-			| Verbe ->
-
-(*
 Pour les phrases plus complexes, il faudra prendre en compte les propositions,
 les groupes nonimaux... au lieu de modifier cette fonction.
 *)
@@ -126,12 +112,27 @@ let proposition_correcte (phrase : mot list) = match phrase with
 				) && aux suiv q
 	in aux t r
 ;;
+(*
+Nous travaillons sur la structure de phrase simple:
+Sujet Verbe COD
+pour détecter cette structure :
 
+Sujets : (P) (D N) (D A N) etc  ex: "Je" "Un oiseau" "Le premier jeu"
+Verbes : (V) (V V) "parlons" "a entendu"
+COD : (D N) (D N A) 
+
+*)
 type fonction = Sujet | Verbe | ComplementObjetDirect
 
 type blocphrase = {
-	foncti : fontion;
+	foncti : fonction;
 	mots : mot list;
 	acc : accord
 };;
+
+let decoupe_phrase (phrase : mot list) = 
+	let rec aux (phrase : mot list) (blocs : blocphrase list) = match phrase with
+		|	[]->blocs
+  	| mot::reste -> match mot.nat with
+			| Verbe -> aux reste ({Verbe,[mot],mot.acc}::blocs)
 
