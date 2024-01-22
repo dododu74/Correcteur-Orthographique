@@ -65,6 +65,19 @@ P V N
 D N V N
 ...
 
+Nous travaillons sur la structure de phrase simple:
+Sujet Verbe COD
+pour détecter cette structure :
+
+Sujets : (P) (D N) (D A N) etc  ex: "Je" "Un oiseau" "Le premier jeu"
+Verbes : (V) (V V) "parlons" "a entendu"
+COD : (D N) (D N A) 
+
+*)
+
+let decoupe_phrase (phrase : mot list) = 
+
+(*
 Pour les phrases plus complexes, il faudra prendre en compte les propositions,
 les groupes nonimaux... au lieu de modifier cette fonction.
 *)
