@@ -1,4 +1,6 @@
 - Faire le lexicalizeur
-- Prendre en compte plus cas dans proposition correcte
-- Ajouter plus règles
+- Continuer le découpage des phrases
+    * Le but est de considérer la phrase comme étant un assemblage de "blocphrase"
+    * On commence avec une structure de phrase avec Sujet Verbe COD
+
 - ...
