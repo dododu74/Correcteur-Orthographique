@@ -25,7 +25,7 @@ type nature =
 	Verbe;;
 
 (*
-Créer un type "constructeur" de mot qui instancie un mot (e.g. manger) decliné avec
+TODO : Créer un type "constructeur" de mot qui instancie un mot (e.g. manger) decliné avec
 sa personne, son genre, son nombre. 
 *)
 
