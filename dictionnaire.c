@@ -40,7 +40,6 @@ dictionnaire dictionnaire_vide()
   return d;
 }
 
-
 /**
  * Ajoute un mot à un dictionnaire précédemment créé.
  *
@@ -54,14 +53,17 @@ dictionnaire dictionnaire_vide()
 void ajouter_mot(dictionnaire d, char* mot)
 {
   assert(d != NULL);
-  if (mot[0] != '\0' && mot[0] != '/') {
+  if (mot[0] == '/'){
+    d->nature = (int)est_minuscule(mot[1]);
+    d->terminal = true;
+  }
+  else if (mot[0] != '\0') {
     int indice = indice_lettre((unsigned char*)mot);
     if (indice == -1) {
       printf("caractere %s non connu !\n", mot);
     } else {
-      if (d->suivantes[indice] == NULL)
-      {
-	d->suivantes[indice] = dictionnaire_vide();
+      if (d->suivantes[indice] == NULL) {
+	       d->suivantes[indice] = dictionnaire_vide();
       }
       char* s = &mot[1];
       if (indice >= 28)
@@ -109,6 +111,35 @@ bool chercher_mot(dictionnaire d, char *mot)
   }
 }
 
+int categoriser_verbe(dictionnaire d, char *mot, int l){
+  assert(d != NULL);
+  for (int i =0; i < l; i++){
+    int indice = indice_lettre((unsigned char*)&mot[i]);
+    if (indice == -1) {
+      printf("caractere %s non connu !\n", mot);
+      return false;
+    }
+    if (d->suivantes[indice] == NULL) {
+      return false;
+    }
+    d = d->suivantes[indice];
+  }
+  int i = l -1;
+  if (d->nature != 1){ // Si c'est pas un verbe ca retourne 0
+    return 0;
+  }
+  else if (mot[i-1] == 'r'){
+    //Si premier groupe
+    if (mot[i-2] == 'e'){
+      return 1;
+    }
+    //Si deuxième groupe
+    else if (mot[i-2] == 'i'){
+      return 2;
+    }
+  }
+  return 0;
+}
 
 /**
  * Libère l'espace mémoire alloué au dictionnaire complet.
@@ -156,4 +187,8 @@ int nombre_de_structures(dictionnaire d)
     }
   }
   return cpt;
+}
+
+bool est_minuscule(char c){
+  return (c >= 'a' && c <= 'z');
 }

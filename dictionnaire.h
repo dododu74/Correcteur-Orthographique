@@ -49,7 +49,11 @@
 struct lettre_s {
   struct lettre_s* suivantes[NB_LETTRES];
   bool terminal;
-  int nature; // possibilité d'implémentation
+  int nature; // possibilité d'implémentation 
+  /*
+  verbe 1;
+  autre 0;
+  */
   int nb_mots; // non nécessaire
 };
 
@@ -81,6 +85,8 @@ void ajouter_mot(dictionnaire d,  char* mot);
  */
 bool chercher_mot(dictionnaire d,  char* mot);
 
+int categoriser_verbe(dictionnaire d, char *mot, int l)
+
 
 /**
  * Libère l'espace mémoire alloué au dictionnaire complet.
@@ -94,5 +100,7 @@ void supprimer_dictionnaire(dictionnaire d);
 int nombre_de_mots(dictionnaire d);
 
 int nombre_de_structures(dictionnaire d);
+
+bool est_minuscule(char c);
 
 #endif // DICTIONNAIRE_H
