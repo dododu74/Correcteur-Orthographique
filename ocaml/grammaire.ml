@@ -115,6 +115,7 @@ let proposition_correcte (phrase : mot list) = match phrase with
 (*
 Nous travaillons sur la structure de phrase simple:
 Sujet Verbe COD
+
 pour détecter cette structure :
 
 Sujets : (P) (D N) (D A N) etc  ex: "Je" "Un oiseau" "Le premier jeu"
@@ -136,6 +137,12 @@ let creer_bloc (fo : fonction) (mo : mot list) (ac : accord) = {fonct = fo; mots
 (* Ajout d'un mot dans un bloc *)
 let add_in_bloc (bloc : blocphrase) (mo : mot) = {fonct = bloc.fonct; mots = mo::bloc.mots; acc = mot.acc};;
 
+let add_in_bloc (bloc : blocphrase) (mo : mot) = {fonct = bloc.fonct; mots = mo::bloc.mots; acc = bloc.acc};;
+
+let test_accords_blocs bloc1 bloc2 = 
+	match bloc1,bloc2 with
+	| {_;_;acc1},{_;_;acc2}->acc1=acc2 
+;;
 
 let decoupe_phrase (phrase : mot list) = 
 	let bloc_verbe = creer_bloc Verbe [] m_sing_trois (* Initialisation des blocs *)
@@ -143,3 +150,24 @@ let decoupe_phrase (phrase : mot list) =
 	let bloc_cod = creer_bloc ComplementObjetDirect [] m_sing_trois
 in aux []
 
+	let bloc_verbe = creer_bloc Verbe [] m_sing_trois
+
+	let rec aux (phrase : mot list) (blocs : blocphrase list) = 
+		match phrase with
+			|	[]->blocs
+  		| mot::reste -> 
+				match mot.nat with
+					| Verbe -> aux reste ({Verbe,[mot],mot.acc}::blocs)
+
+(*
+concept:
+
+tant que il y a des mots :
+	si le mot suivant correspond au bloc courant:
+		insérer le mot dans le bloc courant
+	sinon :
+		fermer le bloc, l'ajouter à la liste et en ouvrir un autre
+si il n'y a plus de mots, fermer le bloc courant
+vérifier la cohérence interne de chaque bloc : donc les accords 
+vérifier la structure de la phrase
+*)
